@@ -1,0 +1,32 @@
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+
+using namespace std;
+
+void encode(char s1[], int j){
+    j=j+1;
+
+    for(int i=j-1;i<strlen(s1);i+=j){
+        s1[i] += 2;
+
+    }
+}
+
+int main(){
+
+char s[100];
+int n;
+
+gets(s);
+
+printf("How many characters to skip?: ");
+scanf("%d",&n);
+
+encode(s,n);
+
+puts(s);
+
+return 0;
+
+}

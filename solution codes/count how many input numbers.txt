@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+#include <string>
+#include <algorithm>
+using namespace std;
+int arr[2000];
+
+int main()
+{
+ int T;
+ int n;
+ cin>>T;
+ for(int i=0;i<T;i++)
+ {
+     cin>>n;
+    arr[n]++;
+
+ }
+ for(int i=1;i<=2000;i++)
+ {
+     if(arr[i]>0)
+     
+    // printf("%d apparece %d vez (es)\n", i, arr[i]);
+     cout<<i<<" =" <<arr[i]<<endl;
+ }
+
+  return 0;
+}

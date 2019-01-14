@@ -1,0 +1,12 @@
+int convert(int num)
+{
+    int multi=1;
+    int result =0;
+    int i=0;
+    while(num>0)
+    {
+      result = result + (num%2 * multi)
+      multi = multi*10;
+      num=num/2;  
+
+}

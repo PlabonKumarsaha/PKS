@@ -1,0 +1,23 @@
+#include <iostream>
+#include <math.h>
+#include<bits/stdc++.h>
+#include<set>
+#include <iterator>
+
+ //set <int, greater <int> > gquiz1
+
+
+using namespace std;
+
+int main()
+{ int arr[3] ={2,3,4};
+do{
+    cout<<arr[0] << " "<<arr[1]<< " "<<arr[2]<<endl;
+
+} while(next_permutation(arr,arr+3));
+cout<<"after loop"<<endl;
+cout<<arr[0] << " "<<arr[1]<< " "<<arr[2]<<endl;
+
+    return 0;
+
+}

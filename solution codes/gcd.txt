@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include<algorithm>
+using namespace std;
+int gcd(int a,int b)
+{
+    if(a%b== 0)return b;
+    return gcd(b,a%b);
+}
+
+int gcd_eculide(int a,int b)
+{
+int divident = a>=b? a:b;
+int divisor = a<=b? a:b;
+while(divisor != 0)
+{
+int reminder = divident % divisor;
+divident = divisor;
+divisor = reminder;
+
+}
+}
+
+int main()
+{
+
+cout<<gcd(5,100);
+    return 0;
+}

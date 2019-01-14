@@ -1,0 +1,17 @@
+int main()
+{
+    int n;
+    int r;
+    int sum=0;
+    cin>>n;
+    while(true)
+    {
+        r=n/5;
+        sum=sum+r;
+        if(r==0) break;
+
+        n=n/5;
+    }
+cout<<sum;
+    return 0;
+}

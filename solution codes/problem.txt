@@ -1,0 +1,72 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+void encode(string s1[],int i)
+{ int j,i;
+ for(j=i+1;j<strlen(s1);j=4+i)
+ s1[j]+=2;
+
+}
+int main(){
+
+string s[100];
+int k;
+gets(s);
+cin>>k;
+
+encode(s,k);
+puts(s);
+
+return 0;
+
+}
+
+
+
+
+#include<iostream>
+#include<cstdio>
+#include<string>
+using namespace std;
+int main()
+{
+
+    string x;
+    cin>>x;
+    for(int i=0;i<x.size();i=i+3)
+    {
+
+        int v=x[i]+2;
+        if(x[i]>=65 && x[i]<=90)
+        {
+            if(v>90)
+            {
+
+                if(v==91)
+                    v=65;
+                else
+                    v=66;
+            }
+        }
+
+        if(x[i]>=97 && x[i]<=122)
+        {
+
+            if(v>122\)
+            {
+
+                if(v==122)
+                    v=97;
+                else
+                    v=98;
+            }
+        }
+
+
+            x[i]=(char)v;
+    }
+
+    cout<<x<<"\n";
+
+}
+

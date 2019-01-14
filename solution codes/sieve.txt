@@ -1,0 +1,52 @@
+#include <iostream>
+#include <stdio.h>
+#include <math.h>
+
+using namespace std;
+int prime[1000],np;
+int mark[100000];
+void sieve(int n)
+{
+   int limit=sqrt(n);
+    for(int i=4;i<n;i=i+2)
+    {
+        mark[i]=1; //1 is for not prime
+    }
+    prime[np++]=2;
+
+    for(int i=3;i<n;i=i+2)
+    {
+        prime[np]=i;
+
+        if(!mark[i])
+        {
+
+            prime[np++]=i;
+            if(i<limit){
+
+            for(int j=i*i;j<n;j=j+(i*2))
+            {
+                mark[j]=1;
+
+            }
+            }
+
+        }
+
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        if(prime[i]!=0)
+        cout<<prime[i]<<endl;
+    }
+
+
+}
+int main()
+{
+
+
+sieve(50);
+
+}

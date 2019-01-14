@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{ char a[4][4]={'a','b','a','b',
+                'a','b','a','b',
+                'a','b','a','b',
+                'a','b','a','b',};
+    int i, j, counter=0;
+    for(i=0; i<4; i++){
+        for(j=0;j<4;j++){
+            if(a[i][j]=='b') counter++;
+        }
+    }
+    cout<<counter<<endl;
+    return 0;
+}

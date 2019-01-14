@@ -1,0 +1,47 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int arr[100];
+void primeFactors(int arr[],int n)
+{
+    int k =0;
+    while (n%2 == 0)
+    { arr[k] = 2;
+        //printf("%d ", 2);
+        n = n/2;
+        k++;
+    }
+
+    // n must be odd at this point.  So we can skip
+    // one element (Note i = i +2)
+    for (int i = 3; i <= sqrt(n); i = i+2)
+    {
+        // While i divides n, print i and divide n
+        while (n%i == 0)
+        {
+            arr[k]=i;
+            //printf("%d ", i);
+            n = n/i;
+            k++;
+        }
+    }
+
+    // This condition is to handle the case when n
+    // is a prime number greater than 2
+   if (n > 2)
+     {arr[k]=n;}
+
+       for(int j=0;j<n;j++)
+       {
+       if(arr[j]>0)
+         cout<<arr[j]<< " ";
+       }
+}
+
+/* Driver program to test above function */
+int main()
+{
+    int n = 315;
+    primeFactors(arr,n);
+    return 0;
+}

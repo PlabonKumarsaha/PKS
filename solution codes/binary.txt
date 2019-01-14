@@ -1,0 +1,16 @@
+#include<iostream>
+#include<map>
+#include<string>
+#include<vector>
+#include <bitset>
+using namespace std;
+
+
+int main()
+{
+int number;
+cin>>number;
+bitset <8> bin(number);
+cout<<bin;
+return 0;
+}
