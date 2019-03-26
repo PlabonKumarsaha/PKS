@@ -1,2 +1,2 @@
-# PKS
-i am from American International University Bangladesh .I am in CSE department 
+# This contains my Java course project in University
+
