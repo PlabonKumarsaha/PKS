@@ -1,0 +1,141 @@
+//made by Saqibur Rahman
+
+int control = 0;
+void jTurn();
+void uTurn();
+void leftTurn();
+void rightTurn();
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+ 
+} 
+
+void loop() { 
+   digitalWrite(10, HIGH);
+   control = Serial.read();
+  
+  if (control == 'u'){
+    Serial.println(control);
+    digitalWrite(6, HIGH); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, HIGH); 
+    digitalWrite(9, LOW);
+  }
+  
+  if (control == 'd'){
+    Serial.println(control);
+    digitalWrite(6, LOW); 
+    digitalWrite(7, HIGH);
+
+    digitalWrite(8, LOW); 
+    digitalWrite(9, HIGH);
+  }
+  if (control == 'l'){
+    Serial.println(control);
+    digitalWrite(6, HIGH); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, LOW); 
+    digitalWrite(9, HIGH);
+  }
+   if (control == 'r'){
+    Serial.println(control);
+    digitalWrite(6, LOW); 
+    digitalWrite(7, HIGH);
+
+    digitalWrite(8, HIGH); 
+    digitalWrite(9, LOW );
+  }
+
+  if (control == 'x' || control == '0' || control == 'o' || control == 'M' || control == 'N'){
+    Serial.println(control);
+    digitalWrite(6, LOW); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, LOW); 
+    digitalWrite(9, LOW);
+  }
+
+  if (control == 'j')
+  {
+     jTurn();
+  }
+  if (control == 'e')
+  {
+     uTurn();
+  }
+  if (control == 'L')
+  {
+    leftTurn();
+  }
+  if (control == 'R')
+  {
+    rightTurn();
+  }
+}
+
+void leftTurn()
+{
+    digitalWrite(6, HIGH); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, LOW); 
+    digitalWrite(9, LOW);
+}
+
+void rightTurn()
+{
+    digitalWrite(6, LOW); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, HIGH); 
+    digitalWrite(9, LOW);
+}
+
+void jTurn()
+{
+    digitalWrite(6, HIGH); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, HIGH); 
+    digitalWrite(9, LOW);
+
+    delay(800);
+
+    digitalWrite(6, LOW); 
+    digitalWrite(7, HIGH);
+
+    digitalWrite(8, HIGH); 
+    digitalWrite(9, LOW );
+
+    delay(450);
+
+    digitalWrite(6, LOW); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, LOW); 
+    digitalWrite(9, LOW);
+}
+void uTurn()
+{
+    digitalWrite(6, LOW); 
+    digitalWrite(7, HIGH);
+
+    digitalWrite(8, HIGH); 
+    digitalWrite(9, LOW );
+
+    delay(500);
+
+    digitalWrite(6, LOW); 
+    digitalWrite(7, LOW);
+
+    digitalWrite(8, LOW); 
+    digitalWrite(9, LOW);
+}
