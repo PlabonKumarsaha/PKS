@@ -34,8 +34,8 @@ public class Files {
       String path =dir1.getAbsolutePath();
       //File file
       try{
-      File file1 = new File("F:/trash/file/student.txt");
-         // File file1 = new File(path+"student1.txt");
+      //File file1 = new File("F:/trash/file/student.txt");
+          File file1 = new File(path+"/student1.txt");
       file1.createNewFile();
       System.out.println("file is created");
       }
