@@ -18,7 +18,8 @@ namespace PrintingV2
             InitializeComponent();
         }
 
-
+        //variables
+       // private int itemCountPerPage = 0;
         private List<CartItem> shopCart = new List<CartItem>();
 
 
@@ -40,6 +41,7 @@ namespace PrintingV2
             printpreviewBtn.Enabled = true;
             addToCartbtn.Enabled = true;
             clientNametextBox.Enabled = true;
+            phonenotextBox.Enabled = true;
             quantitytextBox.Enabled = true;
             itemNametextBox.Enabled = true;
             unitPricetextBox.Enabled = true;
@@ -67,9 +69,12 @@ namespace PrintingV2
             unitPricetextBox.Enabled = false;
             itemgroupBox.Enabled = false;
             clientadresstextBox.Enabled = false;
+            phonenotextBox.Enabled = false;
 
             clientNametextBox.Clear();
+            phonenotextBox.Clear();
             quantitytextBox.Clear();
+
             unitPricetextBox.Clear();
             itemNametextBox.Clear();
             totalAmounttextBox.Text = "0";
@@ -93,7 +98,7 @@ namespace PrintingV2
                     item.quantity = Convert.ToInt32(quantitytextBox.Text.Trim());
                     item.unitPrice =Convert.ToDouble(unitPricetextBox.Text.Trim());
                     item.totalPrice = Convert.ToDouble(Convert.ToInt32(quantitytextBox.Text.Trim())* Convert.ToDouble(unitPricetextBox.Text.Trim()));
-
+                    
 
                 };
                 shopCart.Add(item);
@@ -123,7 +128,25 @@ namespace PrintingV2
                 clientNametextBox.Focus();
                 return false;
             }
-            
+            if (clientadresstextBox.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Client adress is not inputed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clientadresstextBox.Focus();
+                return false;
+            }
+
+            if (phonenotextBox.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Client phone number is not inputted!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                phonenotextBox.Focus();
+                return false;
+            }
+            else if (phonenotextBox.Text.Length < 11  )
+            {
+                MessageBox.Show("invalid phone no is not inputed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                phonenotextBox.Focus();
+                return false;
+            }
             if (itemNametextBox.Text.Trim() == String.Empty)
             {
                 MessageBox.Show("Item is not seected!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -174,6 +197,8 @@ namespace PrintingV2
 
             }
 
+           
+
 
             return true;
         }
@@ -206,78 +231,75 @@ namespace PrintingV2
 
         private void PrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            Image image = Resources.car_flat;
-           // e.Graphics.DrawImage(image, 0, 0,image.Width,image.Height);
-            e.Graphics.DrawString("      M/S B.R. MOTORS   "
-              , new Font("Arial", 30, FontStyle.Regular), Brushes.Red, new Point(180, 40));
+            Image image = Resources.pks2_project;
+            e.Graphics.DrawImage(image, 70, 0,image.Width,image.Height);
 
-            e.Graphics.DrawString("\n 54,North Brook Hall Road(Samata tower)\n Bangla Bazar(downstairs of UCB bank)    "
-             , new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(25, 100));
-            e.Graphics.DrawString("Mobile No : 01712387151\n                    01715024317 \n                    01972387151    "
-             , new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(680, 100));
 
-            e.Graphics.DrawString("Date : " + DateTime.Now, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(700, 160));
+            e.Graphics.DrawString("12345", new Font("Arial", 13, FontStyle.Regular), Brushes.Black, new Point(0, 0));
 
-            e.Graphics.DrawString("Client Name : " + clientNametextBox.Text, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 190));
 
-            e.Graphics.DrawString("Client Adress : " + clientadresstextBox.Text, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 220));
+            e.Graphics.DrawString("Date : " + DateTime.Now, new Font("Arial", 13, FontStyle.Regular), Brushes.Black, new Point(600, 310));
 
-            e.Graphics.DrawString("------------------------------------------------------------------------------------------------------------------------ ".Trim()          
-                , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 240));
+            e.Graphics.DrawString("Client Name : " + clientNametextBox.Text, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 310));
 
-            e.Graphics.DrawString("SL no "
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 270));
+            e.Graphics.DrawString("Client Adress : " + clientadresstextBox.Text, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 340));
+
+            e.Graphics.DrawString("Phone no : " + phonenotextBox.Text, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 370));
+
+            e.Graphics.DrawString("________________________________________________________________________________________________ ".Trim()
+                , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 380));
+
+            e.Graphics.DrawString("SL"
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 410));
 
             e.Graphics.DrawString("Item Name "
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(130, 270));
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(100, 410));
 
-            e.Graphics.DrawString("Item Quantity "
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(330, 270));
+            e.Graphics.DrawString("Quantity "
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(520, 410));
             e.Graphics.DrawString("Unit price  "
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(530, 270));
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(630, 410));
 
             e.Graphics.DrawString("Total price  "
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(730, 270));
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(730, 410));
 
-            e.Graphics.DrawString("------------------------------------------------------------------------------------------------------------------------ ".Trim()
-                , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 290));
-            int yPosition = 320;
-            int cnt = 1 ;
+            e.Graphics.DrawString("________________________________________________________________________________________________ ".Trim()
+                , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 420));
+            int yPosition = 450;
+            int cnt = 1;
 
-            foreach(var i in shopCart)
+            foreach (var i in shopCart)
             {
-                e.Graphics.DrawString(cnt.ToString()+"."
+                e.Graphics.DrawString(cnt.ToString() + "."
              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, yPosition));
 
 
-                e.Graphics.DrawString(i.itemName, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(130, yPosition));
+                e.Graphics.DrawString(i.itemName, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(100, yPosition));
 
                 e.Graphics.DrawString(i.quantity.ToString()
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(330, yPosition));
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(520, yPosition));
 
                 e.Graphics.DrawString(i.unitPrice.ToString()
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(530, yPosition));
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(630, yPosition));
 
-                e.Graphics.DrawString(i.unitPrice.ToString()
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(530, yPosition));
-
-                e.Graphics.DrawString(i.unitPrice.ToString()
+               
+                e.Graphics.DrawString(i.totalPrice.ToString()
               , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(730, yPosition));
 
 
                 yPosition = yPosition + 32;
                 cnt++;
-            }
 
-            e.Graphics.DrawString("------------------------------------------------------------------------------------------------------------------------ ".Trim()
+            }
+            e.Graphics.DrawString("___________________________________________________________________________________________ ".Trim()
                , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, yPosition));
 
-            e.Graphics.DrawString("Total Amount in tk : "+totalAmounttextBox.Text.Trim()
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(550, yPosition+20));
+            e.Graphics.DrawString("Total Amount in tk : " + totalAmounttextBox.Text.Trim()
+              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(570, yPosition + 30));
+
 
 
         }
-
 
         private void PrintpreviewBtn_Click(object sender, EventArgs e)
         {
@@ -287,7 +309,14 @@ namespace PrintingV2
 
         private void Printorderbtn_Click(object sender, EventArgs e)
         {
-            printDocument.Print();
+            //go to control panel >>Devices & printers >>select a printer;
+            try
+            { printDocument.Print(); }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
         }
     }
-}
+    }
+

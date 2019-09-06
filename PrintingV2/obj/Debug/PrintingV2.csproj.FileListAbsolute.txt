@@ -1,0 +1,10 @@
+C:\Users\PKS\Desktop\PrintingV2\bin\Debug\PrintingV2.exe.config
+C:\Users\PKS\Desktop\PrintingV2\bin\Debug\PrintingV2.exe
+C:\Users\PKS\Desktop\PrintingV2\bin\Debug\PrintingV2.pdb
+C:\Users\PKS\Desktop\PrintingV2\obj\Debug\PrintingV2.csprojAssemblyReference.cache
+C:\Users\PKS\Desktop\PrintingV2\obj\Debug\PrintingV2.Form1.resources
+C:\Users\PKS\Desktop\PrintingV2\obj\Debug\PrintingV2.Properties.Resources.resources
+C:\Users\PKS\Desktop\PrintingV2\obj\Debug\PrintingV2.csproj.GenerateResource.cache
+C:\Users\PKS\Desktop\PrintingV2\obj\Debug\PrintingV2.csproj.CoreCompileInputs.cache
+C:\Users\PKS\Desktop\PrintingV2\obj\Debug\PrintingV2.exe
+C:\Users\PKS\Desktop\PrintingV2\obj\Debug\PrintingV2.pdb
