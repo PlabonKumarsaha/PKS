@@ -232,11 +232,14 @@ namespace PrintingV2
         private int numberOfItemsPrintedSoFar = 0;
         private void PrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            Image image = Resources.pks2_project;
-            e.Graphics.DrawImage(image, 70, 0,image.Width,image.Height);
+            
+            Image image2 = Resources.pks2_project;
+            e.Graphics.DrawImage(image2, 70, 0,image2.Width,image2.Height);
 
+            Image image = Resources.comapnylogo;
+            e.Graphics.DrawImage(image, 10, 10, image.Width, image.Height);
 
-            e.Graphics.DrawString("12345", new Font("Arial", 13, FontStyle.Regular), Brushes.Black, new Point(0, 0));
+            e.Graphics.DrawString("Memo no : 000001", new Font("Arial", 13, FontStyle.Regular), Brushes.Black, new Point(685, 0));
 
 
             e.Graphics.DrawString("Date : " + DateTime.Now, new Font("Arial", 13, FontStyle.Regular), Brushes.Black, new Point(600, 310));
@@ -336,6 +339,20 @@ namespace PrintingV2
             {
                 MessageBox.Show(exc.ToString());
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            printDocument1.Print();
+        }
+
+        private void PrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bm = new Bitmap(this.CartdataGridView.Width, this.CartdataGridView.Height);
+            CartdataGridView.DrawToBitmap(bm, new Rectangle(0, 0, CartdataGridView.Width, this.CartdataGridView.Height));
+            e.Graphics.DrawImage(bm, 10, 10);
+
+
         }
     }
     }

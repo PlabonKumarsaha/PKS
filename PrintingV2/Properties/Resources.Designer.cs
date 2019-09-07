@@ -103,6 +103,16 @@ namespace PrintingV2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap comapnylogo {
+            get {
+                object obj = ResourceManager.GetObject("comapnylogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_cancel_216128 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_cancel_216128", resourceCulture);
