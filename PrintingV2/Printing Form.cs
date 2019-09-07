@@ -228,7 +228,8 @@ namespace PrintingV2
             double totalAmount = shopCart.Sum(x => x.totalPrice);
             totalAmounttextBox.Text = totalAmount.ToString();
         }
-
+        private int numberOfItemsPerPage = 0;
+        private int numberOfItemsPrintedSoFar = 0;
         private void PrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             Image image = Resources.pks2_project;
@@ -266,40 +267,59 @@ namespace PrintingV2
             e.Graphics.DrawString("________________________________________________________________________________________________ ".Trim()
                 , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, 420));
             int yPosition = 450;
-            int cnt = 1;
+            //int cnt = 1;
 
-            foreach (var i in shopCart)
+            for (int i = numberOfItemsPrintedSoFar; i<shopCart.Count;i++)
             {
-                e.Graphics.DrawString(cnt.ToString() + "."
-             , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, yPosition));
+                numberOfItemsPerPage++;
+                if (numberOfItemsPerPage <= 20)
+                {
+                    numberOfItemsPrintedSoFar++;
+                    if (numberOfItemsPrintedSoFar <= shopCart.Count)
+                    {
+                        e.Graphics.DrawString((numberOfItemsPrintedSoFar).ToString() + "."
+                     , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, yPosition));
 
 
-                e.Graphics.DrawString(i.itemName, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(100, yPosition));
+                        e.Graphics.DrawString(shopCart[i].itemName, new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(100, yPosition));
 
-                e.Graphics.DrawString(i.quantity.ToString()
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(520, yPosition));
+                        e.Graphics.DrawString(shopCart[i].quantity.ToString()
+                      , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(520, yPosition));
 
-                e.Graphics.DrawString(i.unitPrice.ToString()
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(630, yPosition));
-
-               
-                e.Graphics.DrawString(i.totalPrice.ToString()
-              , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(730, yPosition));
+                        e.Graphics.DrawString(shopCart[i].unitPrice.ToString()
+                      , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(630, yPosition));
 
 
-                yPosition = yPosition + 32;
-                cnt++;
+                        e.Graphics.DrawString(shopCart[i].totalPrice.ToString()
+                      , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(730, yPosition));
+
+
+                        yPosition = yPosition + 32;
+                    }
+                    else { e.HasMorePages = false;
+                    }
+                }
+                else
+                {
+                    e.HasMorePages = true;
+                    numberOfItemsPerPage = 0;
+                    return;
+                    
+                }
+               // cnt++;
 
             }
+
             e.Graphics.DrawString("___________________________________________________________________________________________ ".Trim()
                , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(30, yPosition));
 
             e.Graphics.DrawString("Total Amount in tk : " + totalAmounttextBox.Text.Trim()
               , new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(570, yPosition + 30));
+            //Reseting the variables!!
+            numberOfItemsPerPage = 0;
+          numberOfItemsPrintedSoFar = 0;
 
-
-
-        }
+    }
 
         private void PrintpreviewBtn_Click(object sender, EventArgs e)
         {
