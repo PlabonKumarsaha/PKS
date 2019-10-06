@@ -8,6 +8,7 @@ vector<int>v1[100];
 vector<int>v2;
 int color[100];
 
+
 void dfs_visit(int i)
 {
 
@@ -18,6 +19,8 @@ color[i]=2;
 //cout<<x<<" "<<v1[x].size()<<endl;
 for(int j =0;j<v1[i].size();j++)
 {
+
+
     int x=v1[i][j];
     if(color[x]==0)
     {
@@ -34,7 +37,7 @@ color[i]=1;
 }
 void dfs()
 {
-    for(int i=0;i<node;i++)
+    for(int i=1;i<node;i++)
     {
         if(color[i]==0)
         {
@@ -49,17 +52,19 @@ int main()
 {
 
 
-cout<<"enter edge then nodes"<<endl;
-    int m;
-    cin>>m>>node;
+cout<<"enter  nodes edge then"<<endl;
+    int edge;
+    cin>>node>>edge;
+
     //n =nodes
     //m of edges
-    for(int i=0;i<m;i++)
+    for(int i=0;i<edge;i++)
     {
         int p,q;
         cin>>p>>q;
         v1[p].push_back(q);
     }
+
    /* for(int j=0;j<m;j++)
     {
         cout<<j<<" :";
@@ -68,7 +73,6 @@ cout<<"enter edge then nodes"<<endl;
             cout<<v1[j][k]<<" ";
         }
         cout<<"\n";
-
     }*/
     dfs();
     for(int i=0;i<v2.size();i++)
