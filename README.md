@@ -19,7 +19,7 @@ You can use the website to generate badges: https://shields.io/
 <img width="55%" align="right" alt="Github" src="https://raw.githubusercontent.com/onimur/.github/master/.resources/git-header.svg" />
 
 - 🌱 Getting better at : C++,Mobile platform and algorithms, Blockchain;
-- 🌱 I’m currently learning Java Spring,Flutter  and Machine Learning, Computer vision;
+- 🌱 I’m currently learning Java Spring,Flutter and Machine Learning(Python), Computer vision;
 - 🤔 I’m looking for help with Java spring boot and Machine learning 😭;
 - 🤔 Little Experience in : Arduino,Data maining, C#;
 - 💬 Ask me about anything, I am happy to help;
